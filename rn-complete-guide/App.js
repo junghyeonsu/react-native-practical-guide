@@ -2,11 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { 
   StyleSheet,
-  Text,
   View, 
   Button, 
-  TextInput, 
-  ScrollView, 
   FlatList 
 } from 'react-native';
 
@@ -16,25 +13,46 @@ import GoalInput from './components/GoalInput';
 export default function App() {
 
   const [goals, setGoals] = useState([]);
+  const [isAddMode, setIsAddMode] = useState(false);
 
   const addGoalHandler = (value) => {
     // 상태를 적용하기 전 최신 상태 스냅 샷을 보장하는 문법
     setGoals(goals => [
       ...goals, 
-      {key : Math.random().toString(), value: value}
+      {id : Math.random().toString(), value: value}
     ]);
+    setIsAddMode(false);
   };
+
+  const removeGoalHandler = goalId => {
+    setGoals(currentGoals => {
+      return currentGoals.filter((goal) => goal.id !== goalId);
+    });
+  }
+
+  const cancelGoalAdditionHandler = () => {
+    setIsAddMode(false);
+  }
 
   return (
     <View style={styles.screen}>
-      <GoalInput onAddGoal={addGoalHandler} />
+      <Button 
+        onPress={() => setIsAddMode(true)}
+        title="새로운 목표 추가" 
+      />
+      <GoalInput 
+        visible={isAddMode}
+        onAddGoal={addGoalHandler}
+        onCancel={cancelGoalAdditionHandler}
+      />
       <FlatList
-        keyExtractor={(item, index) => item.key}
+        keyExtractor={(item, index) => item.id}
         data={goals} 
         renderItem={itemData => 
-        <GoalItem 
+        <GoalItem
+          id={itemData.item.id}
           title={itemData.item.value} 
-          onDelete={() => {console.log("tap")}} 
+          onDelete={removeGoalHandler} 
         />} 
       />
     </View>
