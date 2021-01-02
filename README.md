@@ -4,4 +4,7 @@
 Section 1
 
 ### rn-complete-guide
-Section 2
+Section 2 - 3
+
+### rn-number-game
+Section 4
