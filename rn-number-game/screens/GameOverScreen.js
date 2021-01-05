@@ -9,7 +9,8 @@ const GameOverScreen = props => {
             <Text>게임이 끝났습니다.</Text>
             <View style={styles.imageContainer}>
                 <Image 
-                    source={require('../assets/success.png')} 
+                    // source={require('../assets/success.png')} 
+                    source={{uri: 'https://pds.joins.com//news/component/htmlphoto_mmdata/201808/03/6a4290a6-6421-414c-9df0-e09b03ce42a0.jpg'}}
                     style={styles.image}
                     resizeMode="cover"
                 />
