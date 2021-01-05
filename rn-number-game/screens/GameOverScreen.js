@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button, Image } from 'react-native'
 
-
+import Color from '../constants/colors'
 
 const GameOverScreen = props => {
     return (
@@ -15,8 +15,8 @@ const GameOverScreen = props => {
                     resizeMode="cover"
                 />
             </View>
-            <Text>시도 횟수 : {props.roundsNumber}</Text>
-            <Text>숫자 : {props.userNumber}</Text>
+            <Text>시도 횟수 : <Text style={styles.highlight}>{props.roundsNumber}</Text></Text>
+            <Text>숫자 : <Text style={styles.highlight}>{props.userNumber}</Text></Text>
             <Button title="새 게임" onPress={props.onRestart} />
         </View>
     )
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'black',
         overflow: 'hidden'
+    },
+    highlight : {
+        color: Color.primary
     }
 })
 
