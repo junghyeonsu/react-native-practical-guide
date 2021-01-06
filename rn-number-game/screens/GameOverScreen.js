@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Button, Image } from 'react-native'
 
 import Color from '../constants/colors'
+import MainButton from '../components/MainButton'
 
 const GameOverScreen = props => {
     return (
@@ -17,7 +18,9 @@ const GameOverScreen = props => {
             </View>
             <Text>시도 횟수 : <Text style={styles.highlight}>{props.roundsNumber}</Text></Text>
             <Text>숫자 : <Text style={styles.highlight}>{props.userNumber}</Text></Text>
-            <Button title="새 게임" onPress={props.onRestart} />
+            <MainButton onPress={props.onRestart}>
+                새 게임
+            </MainButton> 
         </View>
     )
 }

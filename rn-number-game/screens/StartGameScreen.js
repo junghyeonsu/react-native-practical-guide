@@ -12,6 +12,7 @@ import {
 import Card from '../components/Card'
 import Input from '../components/Input'
 import NumberContainer from '../components/NumberContainer'
+import MainButton from '../components/MainButton'
 import Colors from '../constants/colors'
 
 const StartGameScreen = (props) => {
@@ -52,10 +53,9 @@ const StartGameScreen = (props) => {
         <Card style={styles.summaryContainer}>
             <Text>선택한 번호는</Text>
             <NumberContainer>{selectedNumber}</NumberContainer>
-            <Button 
-                title="게임 시작"
-                onPress={() => props.onStartGame(selectedNumber)} 
-            />
+            <MainButton onPress={() => props.onStartGame(selectedNumber)}> 
+                게임 시작 
+            </MainButton>
         </Card>
         )
     }
